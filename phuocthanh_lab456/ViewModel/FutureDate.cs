@@ -11,9 +11,6 @@ namespace phuocthanh_lab456.ViewModel
     {
         public override bool IsValid(object value)
         {
-
-
-
             DateTime dateTime;
             var isValid = DateTime.TryParseExact(Convert.ToString(value), "dd/M/yyyy",
              CultureInfo.CurrentCulture,

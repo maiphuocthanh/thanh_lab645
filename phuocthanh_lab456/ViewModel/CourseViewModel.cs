@@ -1,4 +1,5 @@
-﻿using phuocthanh_lab456.Models;
+﻿using Newtonsoft.Json;
+using phuocthanh_lab456.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,6 +10,9 @@ namespace phuocthanh_lab456.ViewModel
 {
     public class CourseViewModel
     {
+        public IEnumerable<Course> UpcommingCourses { get; set; }
+        public bool ShowAction { get; set; }
+
         [Required]
         public string Place { get; set; }
         [Required]
@@ -24,9 +28,7 @@ namespace phuocthanh_lab456.ViewModel
 
         public DateTime GetDateTime()
         {
-
             return DateTime.Parse(string.Format("{0} {1}", Date, Time));
-
         }
     }
 }

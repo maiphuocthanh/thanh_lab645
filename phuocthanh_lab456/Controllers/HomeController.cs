@@ -1,4 +1,6 @@
-﻿using System;
+﻿using phuocthanh_lab456.Models;
+using phuocthanh_lab456.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +10,25 @@ namespace phuocthanh_lab456.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext _dbContext;
+        public HomeController()
+        {
+            _dbContext = new ApplicationDbContext();
+        }
         public ActionResult Index()
         {
-            return View();
+            var upcommingCourses = _dbContext.Courses
+                .Include(c => c.Lecturer)
+                .Include(c => c.Category)
+                .where(c => c.DateTime > DateTime.Now);
+
+            var ViewModel = new CourseViewModel
+            {
+                UpcommingCourses = upcommingCourses,
+                ShowAction = User.Identity.IsAuthenticated
+            };
+
+            return View(ViewModel);
         }
 
         public ActionResult About()

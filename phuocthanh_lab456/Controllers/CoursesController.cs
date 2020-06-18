@@ -3,6 +3,7 @@ using phuocthanh_lab456.Models;
 using phuocthanh_lab456.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -21,7 +22,7 @@ namespace phuocthanh_lab456.Controllers
 
 
         // GET: Courses
-        [Authorize]
+        //[Authorize]
         public ActionResult Create()
         {
             var ViewModel = new CourseViewModel
@@ -37,6 +38,7 @@ namespace phuocthanh_lab456.Controllers
 
         [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
 
         public ActionResult Create(CourseViewModel viewModel)
         {
@@ -57,6 +59,22 @@ namespace phuocthanh_lab456.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+        //th
+        [Authorize]
+        public ActionResult Attending()
+        {
+            var userId = User.Identity.GetUserId();
+            var courses = _dbContext.Attendances
+                .Where(a => a.AttendeeId == userId)
+                .Select(a => a.Course)
+                .Include(1 => 1.Lecturer)
+                .Include(1 => 1.Category)
+                .Tolist();
 
-    }
+            var ViewModel = new CourseViewModel
+            {
+                UpcommingCourses = Course,
+                ShowAction = User.Identity.IsAuthenticated
+            };
+            return View(ViewModel);
 }
