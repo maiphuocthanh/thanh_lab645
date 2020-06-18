@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
 using phuocthanh_lab456.Models;
 using phuocthanh_lab456.ViewModel;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace phuocthanh_lab456.Controllers
@@ -21,7 +18,7 @@ namespace phuocthanh_lab456.Controllers
 
 
 
-        // GET: Courses
+        //  GET: Courses
         //[Authorize]
         public ActionResult Create()
         {
@@ -32,8 +29,8 @@ namespace phuocthanh_lab456.Controllers
             return View(ViewModel);
         }
 
-        //them
-        //asdasdasdas
+        ////them
+        ////asdasdasdas
 
 
         [Authorize]
@@ -42,6 +39,7 @@ namespace phuocthanh_lab456.Controllers
 
         public ActionResult Create(CourseViewModel viewModel)
         {
+          
             if (!ModelState.IsValid)
             {
                 viewModel.Categories = _dbContext.Categories.ToList();
@@ -59,7 +57,7 @@ namespace phuocthanh_lab456.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-        //th
+        ////th
         [Authorize]
         public ActionResult Attending()
         {
@@ -67,14 +65,16 @@ namespace phuocthanh_lab456.Controllers
             var courses = _dbContext.Attendances
                 .Where(a => a.AttendeeId == userId)
                 .Select(a => a.Course)
-                .Include(1 => 1.Lecturer)
-                .Include(1 => 1.Category)
-                .Tolist();
+                .Include(l => l.Lecturer)
+                .Include(l => l.category)
+                .ToList();
 
             var ViewModel = new CourseViewModel
             {
-                UpcommingCourses = Course,
+                UpcommingCourses = courses,
                 ShowAction = User.Identity.IsAuthenticated
             };
             return View(ViewModel);
+        }
+    }
 }

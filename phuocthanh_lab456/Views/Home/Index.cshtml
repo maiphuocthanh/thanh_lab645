@@ -1,9 +1,7 @@
-﻿@model phuocthanh_lab456.ViewModel.CourseViewModel
+﻿@model  phuocthanh_lab456.ViewModel.CourseViewModel
 @{
     ViewBag.Title = "Home Page";
 }
-
-
 
 <div class="jumbotron">
     <h1>ASP.NET</h1>
@@ -11,7 +9,7 @@
     <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
 
-<div class="row">
+@*<div class="row">
     <ul>
         @foreach (var course in Model)
         {
@@ -19,10 +17,10 @@
                 @course.DateTime - @course.Lecturer.Name
             </li>
         }
-    </ul>
+    </ul>*@
 
 
-    <div class="col-md-4">
+    @*<div class="col-md-4">
         <h2>Getting started</h2>
         <p>
             ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
@@ -41,10 +39,10 @@
         <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
-</div>
+</div>*@
 
 <ul class="course">
-    @foreach (var course in Model)
+    @foreach (var course in Model.UpcommingCourses)
     {
         <li>
             <div class="date">
@@ -60,12 +58,12 @@
                     @course.Lecturer.Name
                     @if (Model.ShowAction)
                     {
-                        <button class="btn-btn-defaul btn-sm js-toggle-foffow" data-user-id="@course.Leturer">
+                        <button class="btn-btn-defaul btn-sm js-toggle-foffow" data-user-id="@course.LecturerId">
                         </button>
                     }
                 </span>
                 <span class="category">
-                    @course.Category.Name
+                    @course.category.Name
                     @if (Model.ShowAction)
                     {
                         <button cdata-user-id="@course.Id" class="btn">

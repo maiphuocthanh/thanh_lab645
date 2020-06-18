@@ -230,6 +230,10 @@
     <Compile Include="Migrations\202006150243030_PopulateCategoryTable.Designer.cs">
       <DependentUpon>202006150243030_PopulateCategoryTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006180142179_AddNameColumnToApplicationUser.cs" />
+    <Compile Include="Migrations\202006180142179_AddNameColumnToApplicationUser.Designer.cs">
+      <DependentUpon>202006180142179_AddNameColumnToApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -331,6 +335,9 @@
     <EmbeddedResource Include="Migrations\202006150243030_PopulateCategoryTable.resx">
       <DependentUpon>202006150243030_PopulateCategoryTable.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006180142179_AddNameColumnToApplicationUser.resx">
+      <DependentUpon>202006180142179_AddNameColumnToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -350,7 +357,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1267</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:1267/</IISUrl>
+          <IISUrl>http://localhost:1288/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

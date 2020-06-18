@@ -1,10 +1,11 @@
 ﻿using phuocthanh_lab456.Models;
 using phuocthanh_lab456.ViewModel;
-using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System;
 
 namespace phuocthanh_lab456.Controllers
 {
@@ -19,8 +20,8 @@ namespace phuocthanh_lab456.Controllers
         {
             var upcommingCourses = _dbContext.Courses
                 .Include(c => c.Lecturer)
-                .Include(c => c.Category)
-                .where(c => c.DateTime > DateTime.Now);
+                .Include(c => c.category)
+                .Where(c => c.DateTime > DateTime.Now);
 
             var ViewModel = new CourseViewModel
             {

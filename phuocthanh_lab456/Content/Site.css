@@ -46,8 +46,8 @@ textarea {
 
 .course > li .date {
     text-align: center;
-    background-color: #d415d50;
-    color: white;
+    background-color:red;
+    color: blue;
     width: 60px;
     border-radius: 8px;
 }

@@ -7,6 +7,7 @@ using System.Web;
 
 namespace phuocthanh_lab456.Models
 {
+    
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Course> Courses { get; set; }
